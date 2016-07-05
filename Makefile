@@ -6,5 +6,6 @@ test:
 	@ go2xunit -input build/test.log -output build/tests.xml
 
 clean:
-	-rm -r build
-	
+	-rm -r build/*
+
+.PHONY: clean
