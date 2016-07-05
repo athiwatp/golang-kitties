@@ -33,7 +33,7 @@ func TestControllerSpec(t *testing.T) {
 
 				So(err, ShouldBeNil)
 				So(resp.StatusCode, ShouldEqual, http.StatusOK)
-				So(string(body), ShouldEqual, `[{"name":"Gaspart","breed":"British","birthDate":"2016-07-05"}]`)
+				So(string(body), ShouldEqual, `[{"name":"Gaspart","breed":"British","birthDate":"2016-07-05"},{"name":"Marcel","breed":"European","birthDate":"2014-05-02"}]`)
 			})
 		})
 	})

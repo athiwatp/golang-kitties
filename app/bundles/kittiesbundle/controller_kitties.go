@@ -16,7 +16,10 @@ func (c *KittiesController) Index(w http.ResponseWriter, r *http.Request) {
 	c.SendJSON(
 		w,
 		r,
-		[]*Kitty{NewKitty("Gaspart", "British", "2016-07-05")},
+		[]*Kitty{
+			NewKitty("Gaspart", "British", "2016-07-05"),
+			NewKitty("Marcel", "European", "2014-05-02"),
+		},
 		http.StatusOK,
 	)
 }
