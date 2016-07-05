@@ -4,16 +4,20 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/laibulle/kitties/app/kittiesleaf"
+	"github.com/laibulle/kitties/app/bundles/kittiesbundle"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
-	kc := &kittiesleaf.KittiesController{}
+	// Controllers declaration
+	kc := &kittiesbundle.KittiesController{}
 
 	r := mux.NewRouter()
-	r.HandleFunc("/api/v1/kitties", kc.Index).Methods("GET")
+	s := r.PathPrefix("/api/v1/").Subrouter()
+
+	// Routes handling
+	s.HandleFunc("/kitties", kc.Index).Methods("GET")
 
 	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe(":8080", nil))

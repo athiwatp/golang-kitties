@@ -1,8 +1,7 @@
-package kittiesleaf
+package kittiesbundle
 
 import (
 	"net/http"
-	"time"
 
 	"github.com/laibulle/kitties/app/common"
 )
@@ -17,7 +16,7 @@ func (c *KittiesController) Index(w http.ResponseWriter, r *http.Request) {
 	c.SendJSON(
 		w,
 		r,
-		[]*Kitty{NewKitty("Gaspart", "British", time.Now())},
+		[]*Kitty{NewKitty("Gaspart", "British", "2016-07-05")},
 		http.StatusOK,
 	)
 }
