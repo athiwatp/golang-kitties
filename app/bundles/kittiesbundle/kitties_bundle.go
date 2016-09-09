@@ -1,6 +1,8 @@
 package kittiesbundle
 
 import (
+	"net/http"
+
 	"github.com/jinzhu/gorm"
 	"github.com/laibulle/kitties/app/core"
 )
@@ -17,9 +19,19 @@ func NewKittiesBundle(db *gorm.DB) core.Bundle {
 
 	r := []core.Route{
 		core.Route{
-			Method:  core.GET,
+			Method:  http.MethodGet,
 			Path:    "/kitties",
 			Handler: kc.Index,
+		},
+		core.Route{
+			Method:  http.MethodPost,
+			Path:    "/kitties",
+			Handler: kc.Create,
+		},
+		core.Route{
+			Method:  http.MethodDelete,
+			Path:    "/kitties/{id}",
+			Handler: kc.Delete,
 		},
 	}
 

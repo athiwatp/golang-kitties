@@ -28,6 +28,17 @@ func (c *Controller) SendJSON(w http.ResponseWriter, v interface{}, code int) {
 	}
 }
 
+// GetContent of the request inside given struct
+func (c *Controller) GetContent(v interface{}, r *http.Request) error {
+	decoder := json.NewDecoder(r.Body)
+	err := decoder.Decode(v)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // HandleError write error on response and return false if there is no error
 func (c *Controller) HandleError(err error, w http.ResponseWriter) bool {
 	if err == nil {

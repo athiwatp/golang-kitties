@@ -24,3 +24,13 @@ func (m *KittiesMapperSQL) FindAll() ([]Kitty, error) {
 
 	return kitties, nil
 }
+
+// Insert implement KittiesMapper interface
+func (m *KittiesMapperSQL) Insert(k *Kitty) error {
+	return m.db.Create(k).Error
+}
+
+// Delete implement KittiesMapper interface
+func (m *KittiesMapperSQL) Delete(id int) error {
+	return m.db.Delete(&Kitty{ID: id}).Error
+}
